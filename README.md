@@ -1,6 +1,6 @@
-# changelogithub
+# changeloggithub
 
-[![NPM version](https://img.shields.io/npm/v/changelogithub?color=a1b858&label=)](https://www.npmjs.com/package/changelogithub)
+[![NPM version](https://img.shields.io/npm/v/changeloggithub?color=a1b858&label=)](https://www.npmjs.com/package/changeloggithub)
 
 Generate changelog for GitHub releases from [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), powered by [changelogen](https://github.com/unjs/changelogen).
 
@@ -39,29 +39,24 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 18.x
 
-      - run: npx changelogithub # or changelogithub@0.12 if ensure the stable result
+      - run: npx changeloggithub
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 ```
 
 It will be trigged whenever you push a tag to GitHub that starts with `v`.
 
-## Configuration
-
-You can put a configuration file in the project root, named as `changelogithub.config.{json,ts,js,mjs,cjs}`, `.changelogithubrc` or use the `changelogithub` field in `package.json`.
-
 ## Preview Locally
 
 ```bash
-npx changelogithub --dry
+npx changeloggithub --dry
 ```
 
-## Why?
+## Write to a file
 
-I used to use [`conventional-github-releaser`](https://github.com/conventional-changelog/releaser-tools/tree/master/packages/conventional-github-releaser) for almost all my projects. Until I found that it [does NOT support using exclamation mark for breaking changes](https://github.com/conventional-changelog/conventional-changelog/issues/648) - hiding those important breaking changes in the changelog without the awareness from maintainers.
 
-## License
-
-[MIT](./LICENSE) License © 2022 [Anthony Fu](https://github.com/antfu)
+```bash
+npx changeloggithub@latest --output ./CHANGELOG-v1.0.3.md
+```
