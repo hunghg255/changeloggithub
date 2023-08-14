@@ -5,14 +5,14 @@ import cac from 'cac'
 import { version } from '../package.json'
 import { generate, hasTagOnGitHub, isRepoShallow, sendRelease } from './index'
 
-const cli = cac('changelogithub')
+const cli = cac('changeloggithub')
 
 cli
   .version(version)
   .option('-t, --token <path>', 'GitHub Token')
   .option('--from <ref>', 'From tag')
   .option('--to <ref>', 'To tag')
-  .option('--github <path>', 'GitHub Repository, e.g. antfu/changelogithub')
+  .option('--github <path>', 'GitHub Repository, e.g. hunghg255/changeloggithub')
   .option('--name <name>', 'Name of the release')
   .option('--contributors', 'Show contributors section')
   .option('--prerelease', 'Mark release as prerelease')
@@ -58,16 +58,16 @@ cli
         return
       }
 
+      if (typeof config.output === 'string') {
+        await fs.writeFile(config.output, md, 'utf-8')
+        console.log(yellow(`Saved to ${config.output}`))
+        return
+      }
+
       if (!config.token) {
         console.error(red('No GitHub token found, specify it via GITHUB_TOKEN env. Release skipped.'))
         process.exitCode = 1
         printWebUrl()
-        return
-      }
-
-      if (typeof config.output === 'string') {
-        await fs.writeFile(config.output, md, 'utf-8')
-        console.log(yellow(`Saved to ${config.output}`))
         return
       }
 

@@ -1,8 +1,7 @@
 {
   "name": "changeloggithub",
   "type": "module",
-  "version": "0.0.2",
-  "packageManager": "pnpm@8.6.2",
+  "version": "0.0.4",
   "description": "Generate changelog for GitHub.",
   "license": "MIT",
   "homepage": "https://github.com/hunghg255/changeloggithub#readme",
@@ -43,7 +42,6 @@
     "dev": "unbuild --stub",
     "test": "vitest",
     "lint": "eslint .",
-    "prepublishOnly": "nr build",
     "release": "bumpp --commit --push --tag",
     "start": "nr dev && node cli.mjs",
     "typecheck": "tsc --noEmit"
@@ -52,11 +50,16 @@
     "@antfu/utils": "^0.7.4",
     "c12": "^1.4.1",
     "cac": "^6.7.14",
-    "changelogen": "0.4.0",
+    "consola": "^2.15.3",
     "convert-gitmoji": "0.1.3",
     "execa": "^7.1.1",
     "kolorist": "^1.8.0",
-    "ohmyfetch": "^0.4.21"
+    "mri": "^1.2.0",
+    "node-fetch-native": "^0.1.8",
+    "ohmyfetch": "^0.4.21",
+    "pkg-types": "^0.3.6",
+    "scule": "^0.3.2",
+    "semver": "^7.3.8"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.39.5",
@@ -64,11 +67,15 @@
     "@types/debug": "^4.1.8",
     "@types/fs-extra": "^11.0.1",
     "@types/minimist": "^1.2.2",
+    "@types/node": "^18.11.9",
     "@types/semver": "^7.5.0",
+    "@vitest/coverage-c8": "^0.25.1",
     "bumpp": "^9.1.1",
     "eslint": "^8.42.0",
     "esno": "^0.16.3",
     "fs-extra": "^11.1.1",
+    "jiti": "^1.16.0",
+    "standard-version": "^9.5.0",
     "typescript": "^5.1.3",
     "unbuild": "^1.2.1",
     "vitest": "^0.32.0"
