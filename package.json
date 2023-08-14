@@ -1,0 +1,76 @@
+{
+  "name": "changeloggithub",
+  "type": "module",
+  "version": "0.0.1",
+  "packageManager": "pnpm@8.6.2",
+  "description": "Generate changelog for GitHub.",
+  "license": "MIT",
+  "homepage": "https://github.com/hunghg255/changeloggithub#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hunghg255/changeloggithub.git"
+  },
+  "bugs": "https://github.com/hunghg255/changeloggithub/issues",
+  "keywords": [
+    "github",
+    "release",
+    "releases",
+    "conventional",
+    "changelog",
+    "log"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "bin": "./cli.mjs",
+  "files": [
+    "dist",
+    "*.mjs"
+  ],
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "scripts": {
+    "build": "unbuild",
+    "dev": "unbuild --stub",
+    "test": "vitest",
+    "lint": "eslint .",
+    "prepublishOnly": "nr build",
+    "release": "bumpp --commit --push --tag",
+    "start": "nr dev && node cli.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@antfu/utils": "^0.7.4",
+    "c12": "^1.4.1",
+    "cac": "^6.7.14",
+    "changelogen": "0.4.0",
+    "convert-gitmoji": "0.1.3",
+    "execa": "^7.1.1",
+    "kolorist": "^1.8.0",
+    "ohmyfetch": "^0.4.21"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.39.5",
+    "@types/conventional-changelog": "^3.1.1",
+    "@types/debug": "^4.1.8",
+    "@types/fs-extra": "^11.0.1",
+    "@types/minimist": "^1.2.2",
+    "@types/semver": "^7.5.0",
+    "bumpp": "^9.1.1",
+    "eslint": "^8.42.0",
+    "esno": "^0.16.3",
+    "fs-extra": "^11.1.1",
+    "typescript": "^5.1.3",
+    "unbuild": "^1.2.1",
+    "vitest": "^0.32.0"
+  }
+}
