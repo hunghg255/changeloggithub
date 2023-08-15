@@ -22,6 +22,7 @@ cli
   .option('--emoji', 'Use emojis in section titles', { default: true })
   .option('--group', 'Nest commit messages under their scopes')
   .option('--dry', 'Dry run')
+  .option('--all', 'All Changelogs')
   .help()
 
 cli
@@ -35,7 +36,14 @@ cli
       console.log()
       console.log(dim(`changelo${bold('github')} `) + dim(`v${version}`))
 
-      const { config, md, commits } = await generate(args as any)
+      const { config, md, commits } = await generate(args as any) as any;
+
+      if (config.all) {
+        await fs.writeFile(config.output || 'CHANGELOG.md', md, 'utf-8')
+        console.log(yellow(`Saved to ${config.output || 'CHANGELOG.md'}`))
+        return
+      }
+
       webUrl = `https://github.com/${config.github}/releases/new?title=${encodeURIComponent(String(config.name || config.to))}&body=${encodeURIComponent(String(md))}&tag=${encodeURIComponent(String(config.to))}&prerelease=${config.prerelease}`
 
       console.log(cyan(config.from) + dim(' -> ') + blue(config.to) + dim(` (${commits.length} commits)`))
@@ -58,11 +66,6 @@ cli
         return
       }
 
-      if (typeof config.output === 'string') {
-        await fs.writeFile(config.output, md, 'utf-8')
-        console.log(yellow(`Saved to ${config.output}`))
-        return
-      }
 
       if (!config.token) {
         console.error(red('No GitHub token found, specify it via GITHUB_TOKEN env. Release skipped.'))

@@ -118,6 +118,30 @@ export function generateMarkdown(commits: Commit[], options: ResolvedChangelogOp
   return convert(lines.join('\n').trim(), true)
 }
 
+export function generateMarkdownAllCommit(commits: Commit[], options: ResolvedChangelogOptions) {
+  const lines: string[] = []
+
+  const [breaking, changes] = partition(commits, c => c.isBreaking)
+
+  const group = groupBy(changes, 'type')
+
+  lines.push(
+    ...formatSection(breaking, options.titles.breakingChanges!, options),
+  )
+
+  for (const type of Object.keys(options.types)) {
+    const items = group[type] || []
+    lines.push(
+      ...formatSection(items, options.types[type].title, options),
+    )
+  }
+
+  if (!lines.length)
+    lines.push('*No significant changes*')
+
+  return convert(lines.join('\n').trim(), true)
+}
+
 function groupBy<T>(items: T[], key: string, groups: Record<string, T[]> = {}) {
   for (const item of items) {
     const v = (item as any)[key] as string

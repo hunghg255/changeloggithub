@@ -30,6 +30,7 @@ const defaultConfig: ChangelogOptions = {
     style: { title: '🎨 Styles' },
     ci: { title: '🤖 CI' },
     workflow: { title: '⛏ Workflow' },
+    other: { title: '🦋 Other' },
   },
   titles: {
     breakingChanges: '🚨 Breaking Changes',
@@ -54,6 +55,10 @@ export async function resolveConfig(options: ChangelogOptions) {
 
   if (config.to === config.from)
     config.from = (await getLastGitTag(-1)) || (await getFirstGitCommit());
+
+  if (config.all) {
+    config.from = await getFirstGitCommit();
+  }
 
   return config as ResolvedChangelogOptions;
 }

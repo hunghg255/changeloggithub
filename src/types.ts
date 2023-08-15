@@ -65,6 +65,11 @@ export interface ChangelogOptions extends Partial<ChangelogenOptions> {
    * @default true
    */
   emoji?: boolean
+  /**
+   * Export all changelogs
+   * @default false
+   */
+  all?: boolean
 }
 
 export type ResolvedChangelogOptions = Required<ChangelogOptions>

@@ -58,5 +58,5 @@ npx changeloggithub --dry
 
 
 ```bash
-npx changeloggithub@latest --output ./CHANGELOG-v1.0.3.md
+npx changeloggithub@latest --all true
 ```
