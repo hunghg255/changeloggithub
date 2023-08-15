@@ -15,16 +15,12 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: Set node
-        uses: actions/setup-node@v3
+
+      - uses: actions/setup-node@v3
         with:
-          registry-url: https://registry.npmjs.org/
           node-version: 18.x
 
-      - name: Install
-        run: npm install
-
-      - run: npm start
+      - run: npx changeloggithub
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
