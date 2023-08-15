@@ -1,7 +1,7 @@
 {
   "name": "changeloggithub",
   "type": "module",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "Generate changelog for GitHub.",
   "license": "MIT",
   "homepage": "https://github.com/hunghg255/changeloggithub#readme",
