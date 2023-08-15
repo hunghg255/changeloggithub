@@ -20,14 +20,6 @@ jobs:
         with:
           node-version: 18.x
 
-      - run: npm install
-
       - run: npx changeloggithub
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
-      - run: npm run build
-
-      - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
