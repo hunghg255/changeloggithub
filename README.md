@@ -15,6 +15,7 @@ Generate changelog for GitHub releases from [Conventional Commits](https://www.c
 - List contributors
 - Support `--dry` mode to preview the changelog
 - Support `--all` mode to write to a file
+- Support `--from` and `--to` mode to write to a file between two tags
 
 ## Usage
 
@@ -63,4 +64,11 @@ npx changeloggithub@latest --dry
 
 ```bash
 npx changeloggithub@latest --all true
+```
+
+## Write to a file between two tags
+
+
+```bash
+npx changeloggithub@latest --from v1.0.0 --to v2.0.0 --output changelog-v2.0.0.md
 ```

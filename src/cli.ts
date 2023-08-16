@@ -66,6 +66,11 @@ cli
         return
       }
 
+      if (config.output) {
+        await fs.writeFile(config.output || 'CHANGELOG.md', md, 'utf-8')
+        console.log(yellow(`Saved to ${config.output || 'CHANGELOG.md'}`))
+        return
+      }
 
       if (!config.token) {
         console.error(red('No GitHub token found, specify it via GITHUB_TOKEN env. Release skipped.'))
