@@ -7,6 +7,12 @@ on:
   push:
     tags:
       - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Dev Deployment'
+        type: string
+        required: true
 
 jobs:
   release:
@@ -20,6 +26,6 @@ jobs:
         with:
           node-version: 18.x
 
-      - run: npx changeloggithub
+      - run: npx changeloggithub@latest
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
