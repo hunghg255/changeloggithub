@@ -41,7 +41,7 @@ jobs:
         with:
           node-version: 18.x
 
-      - run: npx changeloggithub
+      - run: npx changeloggithub@latest
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 ```
@@ -51,7 +51,7 @@ It will be trigged whenever you push a tag to GitHub that starts with `v`.
 ## Preview Locally
 
 ```bash
-npx changeloggithub --dry
+npx changeloggithub@latest --dry
 ```
 
 ## Write to a file

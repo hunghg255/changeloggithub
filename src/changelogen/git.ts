@@ -10,7 +10,6 @@ export interface RawGitCommit {
   body: string;
   shortHash: string;
   author: GitCommitAuthor;
-  committerDate: string;
 }
 
 export interface Reference {
@@ -58,25 +57,19 @@ export async function getGitDiff(
     '--no-pager',
     'log',
     `${from ? `${from}...` : ''}${to}`,
-    '--pretty="----%n%s|%h|%an|%ae%n%b|%cs"',
+    '--pretty="----%n%s|%h|%an|%ae%n%b"',
     '--name-status',
   ]);
-
   return r
     .split('----\n')
     .splice(1)
     .map((line) => {
-      const [first, date, ..._body] = line.split('\n');
-
-      const firstLine = first + date;
-
-      const [message, shortHash, authorName, authorEmail, committerDate] =
+      const [firstLine, ..._body] = line.split('\n');
+      const [message, shortHash, authorName, authorEmail] =
         firstLine.split('|');
-
       const r: RawGitCommit = {
         message,
         shortHash,
-        committerDate: `${committerDate}`.replace(/"/g, ''),
         author: { name: authorName, email: authorEmail },
         body: _body.join('\n'),
       };

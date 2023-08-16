@@ -17,10 +17,16 @@ export async function generate(options: ChangelogOptions) {
     tags.unshift(resolved.from as string);
 
     for (let index = 0; index < tags.length; index++) {
-      const tag = tags[index];
-      const nextTag = tags[index + 1];
+      let tagS = tags[index];
+      let nextTagS = tags[index + 1];
 
-      if (!nextTag) break;
+      if (!nextTagS) break;
+      tagS = tagS.replace(/\"/g, '');
+      nextTagS = nextTagS.replace(/\"/g, '');
+
+      const tag = tagS.split(' ')[0];
+      const nextTag = nextTagS.split(' ')[0];
+      const dateCreated = nextTagS.split(' ')[1];
 
       const rawCommits = await getGitDiff(tag, nextTag);
 
@@ -30,7 +36,7 @@ export async function generate(options: ChangelogOptions) {
         await resolveAuthors(commits, resolved);
       }
 
-      const link = `[${commits[0].committerDate}](https://github.com/${resolved.github}/compare/${tag}...${nextTag})`
+      const link = `[${dateCreated}](https://github.com/${resolved.github}/compare/${tag}...${nextTag})`;
 
       let sec = `## ${nextTag ? nextTag : tag} - ${link}\n`;
 
@@ -40,7 +46,7 @@ export async function generate(options: ChangelogOptions) {
         to: nextTag || 'HEAD',
       });
 
-      sec += '\n'
+      sec += '\n';
 
       md.push(sec);
     }
