@@ -4,6 +4,8 @@
 
 Generate changelog for GitHub releases from [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), powered by [changelogen](https://github.com/unjs/changelogen).
 
+- Forked from [changelogithub](https://github.com/antfu/changelogithub)
+- Forked from [changelogen](https://github.com/unjs/changelogen)
 
 ## Features
 
@@ -11,6 +13,8 @@ Generate changelog for GitHub releases from [Conventional Commits](https://www.c
 - Grouped scope in changelog
 - Create the release note, or update the existing one
 - List contributors
+- Support `--dry` mode to preview the changelog
+- Support `--all` mode to write to a file
 
 ## Usage
 
