@@ -20,7 +20,7 @@ Generate changelog for GitHub releases from [Conventional Commits](https://www.c
 ## Usage
 
 In GitHub Actions:
-- combined with [bumpp](npmjs.com/package/bumpp)
+- combined with [bumpp](https://npmjs.com/package/bumpp)
   
 ```yml
 # .github/workflows/release.yml
