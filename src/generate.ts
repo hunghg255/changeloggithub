@@ -36,9 +36,9 @@ export async function generate(options: ChangelogOptions) {
         await resolveAuthors(commits, resolved);
       }
 
-      const link = `[${dateCreated}](https://github.com/${resolved.github}/compare/${tag}...${nextTag})`;
+      const link = `[${nextTag ? nextTag : tag}](https://github.com/${resolved.github}/compare/${tag}...${nextTag})`;
 
-      let sec = `## ${nextTag ? nextTag : tag} - ${link}\n`;
+      let sec = `## ${link} - ${dateCreated}\n`;
 
       sec += generateMarkdownAllCommit(commits, {
         ...resolved,
