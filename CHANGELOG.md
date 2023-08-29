@@ -1,3 +1,7 @@
+## [v0.0.27](https://github.com/hunghg255/changeloggithub/compare/v0.0.26...v0.0.27) - 2023-08-29
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- Release v0.0.27 &nbsp;-&nbsp; by **hunghg255** [<samp>(75456)</samp>](https://github.com/hunghg255/changeloggithub/commit/75456da)
 ## [v0.0.26](https://github.com/hunghg255/changeloggithub/compare/v0.0.25...v0.0.26) - 2023-08-16
 ### &nbsp;&nbsp;&nbsp;🐞 Fixes
 
