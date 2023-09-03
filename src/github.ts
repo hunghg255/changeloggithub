@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { $fetch } from 'ohmyfetch'
+import { ofetch } from 'ofetch'
 import { cyan, green } from 'kolorist'
 import { notNullish } from '@antfu/utils'
 import type { AuthorInfo, ChangelogOptions, Commit } from './types'
@@ -13,7 +13,7 @@ export async function sendRelease(
   let method = 'POST'
 
   try {
-    const exists = await $fetch(`https://api.github.com/repos/${options.github}/releases/tags/${options.to}`, {
+    const exists = await ofetch(`https://api.github.com/repos/${options.github}/releases/tags/${options.to}`, {
       headers,
     })
     if (exists.url) {
@@ -32,7 +32,7 @@ export async function sendRelease(
     tag_name: options.to,
   }
   console.log(cyan(method === 'POST' ? 'Creating release notes...' : 'Updating release notes...'))
-  const res = await $fetch(url, {
+  const res = await ofetch(url, {
     method,
     body: JSON.stringify(body),
     headers,
@@ -56,7 +56,7 @@ export async function resolveAuthorInfo(options: ChangelogOptions, info: AuthorI
     return info
 
   try {
-    const data = await $fetch(`https://api.github.com/search/users?q=${encodeURIComponent(info.email)}`, {
+    const data = await ofetch(`https://api.github.com/search/users?q=${encodeURIComponent(info.email)}`, {
       headers: getHeaders(options),
     })
     info.login = data.items[0].login
@@ -68,7 +68,7 @@ export async function resolveAuthorInfo(options: ChangelogOptions, info: AuthorI
 
   if (info.commits.length) {
     try {
-      const data = await $fetch(`https://api.github.com/repos/${options.github}/commits/${info.commits[0]}`, {
+      const data = await ofetch(`https://api.github.com/repos/${options.github}/commits/${info.commits[0]}`, {
         headers: getHeaders(options),
       })
       info.login = data.author.login
@@ -125,7 +125,7 @@ export async function resolveAuthors(commits: Commit[], options: ChangelogOption
 
 export async function hasTagOnGitHub(tag: string, options: ChangelogOptions) {
   try {
-    await $fetch(`https://api.github.com/repos/${options.github}/git/ref/tags/${tag}`, {
+    await ofetch(`https://api.github.com/repos/${options.github}/git/ref/tags/${tag}`, {
       headers: getHeaders(options),
     })
     return true
