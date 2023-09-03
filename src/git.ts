@@ -20,8 +20,7 @@ export async function getLastGitTag(delta = 0) {
 }
 
 export async function getAllGitTag() {
-  const tags = await execCommand('git', ['--no-pager', 'tag', '-l', '--sort=creatordate', '--format="%(refname:short) %(creatordate:short)"']).then(r => r.split('\n'))
-  return tags;
+  return execCommand('git', ['--no-pager', 'tag', '-l', '--sort=creatordate', '--format="%(refname:short) %(creatordate:short)"']).then(r => r.split('\n'));
 }
 
 export async function isRefGitTag(to: string) {

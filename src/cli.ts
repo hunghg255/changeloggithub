@@ -34,18 +34,19 @@ cli
 
     try {
       console.log()
-      console.log(dim(`changelo${bold('github')} `) + dim(`v${version}`))
+      console.log(dim(`changeloggithub `) + dim(`v${version}\n`))
 
       const { config, md, commits } = await generate(args as any) as any;
 
       if (config.all) {
         await fs.writeFile(config.output || 'CHANGELOG.md', md, 'utf-8')
-        console.log(yellow(`Saved to ${config.output || 'CHANGELOG.md'}`))
+        console.log(yellow(`\nSaved to ${config.output || 'CHANGELOG.md'}`))
         return
       }
 
       webUrl = `https://github.com/${config.github}/releases/new?title=${encodeURIComponent(String(config.name || config.to))}&body=${encodeURIComponent(String(md))}&tag=${encodeURIComponent(String(config.to))}&prerelease=${config.prerelease}`
 
+      console.log(dim('--------------'))
       console.log(cyan(config.from) + dim(' -> ') + blue(config.to) + dim(` (${commits.length} commits)`))
       console.log(dim('--------------'))
       console.log()

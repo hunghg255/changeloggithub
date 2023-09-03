@@ -42,10 +42,9 @@
     "dev": "unbuild --stub",
     "test": "vitest",
     "lint": "eslint .",
-    "release": "bumpp -r",
-    "start": "nr dev && node cli.mjs",
+    "start": "npm run dev && node cli.mjs --all true",
     "typecheck": "tsc --noEmit",
-    "changelog": "npx changeloggithub@latest --all true"
+    "release": "bumpp -r && npx changeloggithub@latest --all true && git add CHANGELOG.md && git commit -m 'chore: update changelog' && git push"
   },
   "dependencies": {
     "@antfu/utils": "^0.7.6",

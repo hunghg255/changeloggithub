@@ -5,6 +5,7 @@ import { resolveConfig } from './config';
 import { parseCommits } from './parse';
 import { getGitDiff } from './changelogen/git';
 import { getAllGitTag } from './git';
+import { blue, cyan, dim } from 'kolorist';
 
 export async function generate(options: ChangelogOptions) {
   const resolved = await resolveConfig(options);
@@ -15,6 +16,8 @@ export async function generate(options: ChangelogOptions) {
     const tags = await getAllGitTag();
 
     tags.unshift(resolved.from as string);
+
+    console.log(dim('--------------'));
 
     for (let index = 0; index < tags.length; index++) {
       let tagS = tags[index];
@@ -47,11 +50,13 @@ export async function generate(options: ChangelogOptions) {
       });
 
       sec += '\n';
-
+      console.log(cyan(tag) + dim(' -> ') + blue(nextTag) + dim(` (${commits.length} commits)`));
       md.push(sec);
     }
 
     md.reverse();
+
+    console.log(dim('--------------'));
 
     return { config: resolved, md: md, commits: [] };
   }
