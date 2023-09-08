@@ -1,3 +1,13 @@
+## [v0.0.31](https://github.com/hunghg255/changeloggithub/compare/v0.0.30...v0.0.31) - 2023-09-08
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- Release v0.0.31 &nbsp;-&nbsp; by **hunghg255** [<samp>(09827)</samp>](https://github.com/hunghg255/changeloggithub/commit/0982798)
+## [v0.0.30](https://github.com/hunghg255/changeloggithub/compare/v0.0.29...v0.0.30) - 2023-09-08
+### &nbsp;&nbsp;&nbsp;🏡 Chore
+
+- Update changelog &nbsp;-&nbsp; by **hunghg255** [<samp>(1c7fd)</samp>](https://github.com/hunghg255/changeloggithub/commit/1c7fd8d)
+- Update config &nbsp;-&nbsp; by **hunghg255** [<samp>(182fb)</samp>](https://github.com/hunghg255/changeloggithub/commit/182fb28)
+- Release v0.0.30 &nbsp;-&nbsp; by **hunghg255** [<samp>(b49e8)</samp>](https://github.com/hunghg255/changeloggithub/commit/b49e8d1)
 ## [v0.0.29](https://github.com/hunghg255/changeloggithub/compare/v0.0.28...v0.0.29) - 2023-09-04
 ### &nbsp;&nbsp;&nbsp;🏡 Chore
 
