@@ -4,8 +4,54 @@ import { fetch } from 'node-fetch-native'
 import type { ChangelogConfig } from './config'
 import type { GitCommit, Reference } from './git'
 
+const refTypeMap: Record<Reference['type'], string> = {
+  'pull-request': 'pull',
+  'hash': 'commit',
+  'issue': 'ssue',
+}
+
+function groupBy(items: any[], key: string) {
+  const groups: any = {}
+  for (const item of items) {
+    groups[item[key]] = groups[item[key]] || []
+    groups[item[key]].push(item)
+  }
+  return groups
+}
+
+function formatCommit(commit: GitCommit, config: ChangelogConfig) {
+  return `  - ${
+  commit.scope ? `**${commit.scope.trim()}:** ` : ''
+  }${commit.isBreaking ? '⚠️  ' : ''
+  }${upperFirst(commit.description)
+  }${formatReferences(commit.references, config)}`
+}
+
+function formatReference(ref: Reference, config: ChangelogConfig) {
+  if (!config.github)
+    return ref.value
+
+  return `[${ref.value}](https://github.com/${config.github}/${refTypeMap[ref.type]}/${ref.value.replace(/^#/, '')})`
+}
+
+function formatReferences(references: Reference[], config: ChangelogConfig) {
+  const pr = references.filter(ref => ref.type === 'pull-request')
+  const issue = references.filter(ref => ref.type === 'issue')
+  if (pr.length || issue.length)
+    return ` (${[...pr, ...issue].map(ref => formatReference(ref, config)).join(', ')})`
+
+  if (references.length)
+    return ` (${formatReference(references[0], config)})`
+
+  return ''
+}
+
+function formatName(name = '') {
+  return name.split(' ').map(p => upperFirst(p.trim())).join(' ')
+}
+
 export async function generateMarkDown(commits: GitCommit[], config: ChangelogConfig) {
-  const typeGroups = groupBy(commits, 'type')
+  const typeGroups = groupBy(commits, 'type') as any;
 
   const markdown: string[] = []
   const breakingChanges = []
@@ -86,50 +132,4 @@ export async function generateMarkDown(commits: GitCommit[], config: ChangelogCo
   }
 
   return convert(markdown.join('\n').trim(), true)
-}
-
-function formatCommit(commit: GitCommit, config: ChangelogConfig) {
-  return `  - ${
-  commit.scope ? `**${commit.scope.trim()}:** ` : ''
-  }${commit.isBreaking ? '⚠️  ' : ''
-  }${upperFirst(commit.description)
-  }${formatReferences(commit.references, config)}`
-}
-
-const refTypeMap: Record<Reference['type'], string> = {
-  'pull-request': 'pull',
-  'hash': 'commit',
-  'issue': 'ssue',
-}
-
-function formatReference(ref: Reference, config: ChangelogConfig) {
-  if (!config.github)
-    return ref.value
-
-  return `[${ref.value}](https://github.com/${config.github}/${refTypeMap[ref.type]}/${ref.value.replace(/^#/, '')})`
-}
-
-function formatReferences(references: Reference[], config: ChangelogConfig) {
-  const pr = references.filter(ref => ref.type === 'pull-request')
-  const issue = references.filter(ref => ref.type === 'issue')
-  if (pr.length || issue.length)
-    return ` (${[...pr, ...issue].map(ref => formatReference(ref, config)).join(', ')})`
-
-  if (references.length)
-    return ` (${formatReference(references[0], config)})`
-
-  return ''
-}
-
-function formatName(name = '') {
-  return name.split(' ').map(p => upperFirst(p.trim())).join(' ')
-}
-
-function groupBy(items: any[], key: string) {
-  const groups = {}
-  for (const item of items) {
-    groups[item[key]] = groups[item[key]] || []
-    groups[item[key]].push(item)
-  }
-  return groups
 }

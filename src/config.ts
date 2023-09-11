@@ -21,6 +21,7 @@ const defaultConfig: ChangelogOptions = {
     refactor: { title: '🔨 Refactor' },
     revert: { title: '⏪ Reverts' },
     i18n: { title: '🌐 I18n' },
+    a11y: { title: '♿️ Accessibility' },
     report: { title: '📊 Report' },
     cli: { title: '🖥 CLI' },
     audits: { title: '🔍 Audits' },
@@ -38,6 +39,9 @@ const defaultConfig: ChangelogOptions = {
     workflow: { title: '🔧 Workflow' },
     release: { title: '🚢 Release' },
     deps: { title: '📦 Dependencies' },
+    improve: { title: '👌 Improvements' },
+    security: { title: '🔒 Security' },
+    deprecated: { title: '🗑 Deprecated' },
     other: { title: '🧹 Other' },
   },
   titles: {
