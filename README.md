@@ -1,6 +1,19 @@
-# changeloggithub
+<p align="center">
+<a href="https://www.npmjs.com/package/changeloggithub" target="_blank" rel="noopener noreferrer">
+<img src="https://api.iconify.design/bi:tags.svg?color=%23f9ec5d" alt="logo" width='100'/></a>
+</p>
 
-[![NPM version](https://img.shields.io/npm/v/changeloggithub?color=a1b858&label=)](https://www.npmjs.com/package/changeloggithub)
+<p align="center">
+  A script to generate changelog from github releases
+</p>
+
+<p align="center">
+  <a href="https://www.npmjs.com/package/changeloggithub" target="_blank" rel="noopener noreferrer"><img src="https://badge.fury.io/js/changeloggithub.svg" alt="NPM Version" /></a>
+  <a href="https://www.npmjs.com/package/changeloggithub" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/npm/dt/changeloggithub.svg?logo=npm" alt="NPM Downloads" /></a>
+  <a href="https://bundlephobia.com/result?p=changeloggithub" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/bundlephobia/minzip/changeloggithub" alt="Minizip" /></a>
+  <a href="https://github.com/hunghg255/changeloggithub/graphs/contributors" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/all_contributors-1-orange.svg" alt="Contributors" /></a>
+  <a href="https://github.com/hunghg255/changeloggithub/blob/main/LICENSE" target="_blank" rel="noopener noreferrer"><img src="https://badgen.net/github/license/hunghg255/changeloggithub" alt="License" /></a>
+</p>
 
 Generate changelog for GitHub releases from [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), powered by [changelogen](https://github.com/unjs/changelogen).
 
