@@ -41,8 +41,7 @@ const defaultConfig: ChangelogOptions = {
     deps: { title: '📦 Dependencies' },
     improve: { title: '👌 Improvements' },
     security: { title: '🔒 Security' },
-    deprecated: { title: '🗑 Deprecated' },
-    other: { title: '🧹 Other' },
+    deprecated: { title: '🗑 Deprecated' }
   },
   titles: {
     breakingChanges: '💥 Breaking Changes'

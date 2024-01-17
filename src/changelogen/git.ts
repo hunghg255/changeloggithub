@@ -100,10 +100,12 @@ export function parseGitCommit(
 ): GitCommit | null {
   const match: any = commit.message.match(ConventionalCommitRegex) as any;
 
-  let type = 'other';
+  let type;
   let description = commit.message;
   let scope = '';
   let isBreaking = false;
+
+  if (!match) return null;
 
   if (match) {
     type = match.groups.type;
