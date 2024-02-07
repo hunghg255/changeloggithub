@@ -15,8 +15,7 @@
   <a href="https://github.com/hunghg255/changeloggithub/blob/main/LICENSE" target="_blank" rel="noopener noreferrer"><img src="https://badgen.net/github/license/hunghg255/changeloggithub" alt="License" /></a>
 </p>
 
-Generate changelog for GitHub releases from [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), powered by [changelogen](https://github.com/unjs/changelogen).
-
+Generate changelog for GitHub releases from [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), 
 - Forked from [changelogithub](https://github.com/antfu/changelogithub)
 - Forked from [changelogen](https://github.com/unjs/changelogen)
 
