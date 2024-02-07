@@ -54,7 +54,7 @@ function formatTitle(name: string, options: ResolvedChangelogOptions) {
 
 function formatSection(commits: Commit[], sectionName: string, options: ResolvedChangelogOptions) {
   if (!commits.length)
-    return []
+  return []
 
   const lines: string[] = [
     '',

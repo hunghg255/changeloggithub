@@ -109,7 +109,7 @@ export function parseGitCommit(
 
   if (match) {
     type = match.groups.type;
-    scope = config.scopeMap[scope] || scope;
+    scope = config.scopeMap[scope] || match.groups.scope || '';
     isBreaking = Boolean(match.groups.breaking);
     description = match.groups.description;
   }
